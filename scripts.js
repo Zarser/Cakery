@@ -167,6 +167,11 @@ function updateCartBadge() {
 function updateCartModal() {
     const cartModalBody = document.getElementById('cart-items-container');
     const cartTotal = document.getElementById('cart-total');
+    const discountInput = document.getElementById('discount-code'); // Discount code input
+    const applyDiscountButton = document.getElementById('apply-discount'); // Apply discount button
+
+    let discountCodeApplied = false;
+    let totalDiscount = 0;
 
     if (!cartModalBody) {
         console.error('cart-items-container element is null');
@@ -223,10 +228,30 @@ function updateCartModal() {
             }
         }
 
-        // Subtract the discount from the total
+        // Subtract the initial discount (if any) from the total
         total = total - discount;
 
-        // Display the total with the discount applied
+        // Event listener for applying the discount code
+        applyDiscountButton.addEventListener('click', function () {
+            const discountCode = discountInput.value.trim().toLowerCase();
+
+            if (discountCode === 'wedding2024') {
+                discountCodeApplied = true;
+                totalDiscount = total * 0.20; // 20% discount for the code
+            } else {
+                discountCodeApplied = false;
+                totalDiscount = 0;
+                alert('Invalid discount code.');
+            }
+
+            // Recalculate total with the discount code applied
+            const finalTotal = total - totalDiscount;
+
+            // Display the final total with the discount applied
+            cartTotal.textContent = `Total: $${finalTotal.toFixed(2)} ${totalDiscount > 0 ? `(Discount code applied: $${totalDiscount.toFixed(2)})` : ''}`;
+        });
+
+        // Initial total display (without the discount code applied)
         cartTotal.textContent = `Total: $${total.toFixed(2)} ${discount > 0 ? `(Discount applied: $${discount.toFixed(2)})` : ''}`;
     }
 
@@ -240,6 +265,8 @@ function updateCartModal() {
         });
     });
 }
+
+
 
 
 // Initialize cart icon and modal event listener

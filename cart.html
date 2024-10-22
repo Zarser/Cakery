@@ -44,7 +44,11 @@
         <h1>Your Shopping Cart</h1>
         <div id="cart-items-container" class="my-4"></div>
         <h3 id="cart-total">Total: $0.00</h3>
-        
+        <div class="form-group">
+            <label for="discount-code">Discount Code</label>
+            <input type="text" id="discount-code" class="form-control" placeholder="Enter discount code">
+            <button class="btn btn-success mt-2" id="apply-discount">Apply Discount</button>
+        </div>
         <!-- Email Input Field -->
         <div class="email-input">
             <label for="user-email">Enter your email address to proceed to checkout:</label>
@@ -54,7 +58,7 @@
         <!-- Proceed to Checkout Button -->
         <button class="btn btn-success mt-3" id="checkout-button" disabled>Proceed to Checkout</button>
     </div>
-
+    
     <div id="footer"></div>
 
     <script src="scripts.js"></script>
