@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Munamii Cakery | Products</title>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="container mt-5 border border-danger">
+        <form class="d-flex" id="search-form">
+            <input class="form-control me-2" type="search" placeholder="Search products" id="search-input" aria-label="Search">
+            <button class="btn btn-outline-success" type="button" id="search-button"><img src="img/search.png" alt="Search" style="height: 20px;"></button>
+        </form>
+        <!-- Cupcakes Section -->
+        <h2 class="text-center">
+            <img src="img/icons/cupcake.png" alt="Cupcakes" style="width: 500px; height: auto;"> <!-- Adjust size as needed -->
+        </h2>
+        <div class="row" id="cupcakes-container">
+            <!-- Cupcake Product Cards will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Wedding Cakes Section -->
+        <h2 class="text-center">
+            <img src="img/icons/wedding.png" alt="Wedding Cakes" style="width: 500px; height: auto;"> <!-- Adjust size as needed -->
+        </h2>
+        <div class="row" id="weddingcakes-container">
+            <!-- Wedding Cake Product Cards will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

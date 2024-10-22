@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Munamii Cakery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to custom styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* Optional custom styles */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            background-color: #ffffff; /* White background for cart items */
+            border-radius: 8px; /* Rounded corners */
+            margin-bottom: 10px; /* Space between items */
+        }
+        .cart-item img {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+            border-radius: 8px; /* Rounded image corners */
+        }
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #d7004d; /* Dark pink for total */
+        }
+        .email-input {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div id="header"></div>
+
+    <div class="container">
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-items-container" class="my-4"></div>
+        <h3 id="cart-total">Total: $0.00</h3>
+        
+        <!-- Email Input Field -->
+        <div class="email-input">
+            <label for="user-email">Enter your email address to proceed to checkout:</label>
+            <input type="email" id="user-email" class="form-control" placeholder="example@domain.com" required>
+        </div>
+        
+        <!-- Proceed to Checkout Button -->
+        <button class="btn btn-success mt-3" id="checkout-button" disabled>Proceed to Checkout</button>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Load header.html into the header div
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Enable/disable checkout button based on email input
+        const emailInput = document.getElementById('user-email');
+        const checkoutButton = document.getElementById('checkout-button');
+
+        emailInput.addEventListener('input', function() {
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+            checkoutButton.disabled = !isValidEmail; // Enable button if valid email
+        });
+
+        // Checkout button click event
+        checkoutButton.addEventListener('click', function() {
+            const email = emailInput.value;
+            alert(`Your order has been confirmed and will be sent to ${email}!`);
+            // Here, you would typically handle sending the order to the backend for email processing
+            // Reset the cart or redirect to a thank-you page
+        });
+    </script>
+</body>
+</html>

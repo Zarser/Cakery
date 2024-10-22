@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Munamii Cakery | Contact</title>
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="container mt-5 border border-danger">
+        <h1>Contact Us</h1>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+        <div id="subscribe" class="mt-4">
+            <h5>Subscribe to our Newsletter</h5>
+            <input type="email" placeholder="Enter your email" id="subscribe-email" required>
+            <button class="btn btn-primary" id="subscribe-btn">Subscribe</button>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

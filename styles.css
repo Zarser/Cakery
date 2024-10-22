@@ -1,0 +1,150 @@
+/* Base Styles */
+body {
+    font-family: 'Great Vibes', cursive;
+    background-image: url('img/backgroud.jpg'); /* Set background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Fix the background image */
+    color: #333; /* Dark gray text */
+    line-height: 1.6;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-size: 1.3em;
+}
+
+/* Container Styles */
+.container {
+    background-color: rgba(255, 255, 255, 0.637); /* Semi-transparent white background */
+    border-radius: 10px; /* Rounded corners for containers */
+    padding: 20px; /* Padding inside containers */
+    margin-top: 20px; /* Space above the container */
+}
+
+/* Card Styles */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Clip the image overflow */
+    background-color: rgba(151, 0, 151, 0.555); /* White background for cards */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Slightly darker shadow on hover */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff; /* White background for footer */
+    padding: 20px;
+    border-top: 2px solid #f1b2c4; /* Light pink border */
+    text-align: center; /* Center footer content */
+}
+
+/* Heading Styles */
+h1, h2 {
+    color: #d7004d; /* Darker pink for headings */
+    font-family: 'Great Vibes', cursive; /* Script font for a dreamy feel */
+}
+
+/* Button Styles */
+button.add-to-cart {
+    background-color: #d7004d; /* Dark pink */
+    color: white;
+    border: none;
+    padding: 10px 15px; /* More padding for buttons */
+    border-radius: 25px; /* Rounded edges */
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer; /* Pointer cursor for buttons */
+}
+
+button.add-to-cart:hover {
+    background-color: #c30043; /* Slightly darker pink on hover */
+    transform: scale(1.05); /* Button scale effect on hover */
+}
+
+/* Cart Modal Styles */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px; /* Increased padding */
+    border-bottom: 1px solid #eee;
+    background-color: #ffffff; /* White background for cart items */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between items */
+}
+
+.cart-item img {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 8px; /* Rounded image corners */
+}
+
+.cart-item p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #6c757d; /* Soft gray text for cart items */
+}
+
+.modal-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Remove from Cart Button */
+.remove-from-cart {
+    background-color: #dc3545; /* Danger button color */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded edges */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.remove-from-cart:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Cart Total Styles */
+#cart-total {
+    font-size: 18px;
+    font-weight: 600;
+    color: #d7004d; /* Darker pink for total */
+    margin-top: 20px; /* Space above the total */
+}
+
+
+
+/* Checkout Button Styles */
+#checkout-button {
+    background-color: #d7004d; /* Dark pink for checkout button */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border-radius: 25px; /* Rounded edges */
+    transition: background-color 0.3s;
+    cursor: pointer; /* Pointer cursor for buttons */
+}
+
+#checkout-button:hover {
+    background-color: #c30043; /* Darker pink on hover */
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #000000;
+    font-size: 1.7em;
+    padding: 25px;
+}
+.navbar .navbar-nav .nav-link:hover{
+    color: #808080;
+}
+.navbar-logo-centered .navbar-nav .nav-link{
+    padding: .5em 1em;
+}
