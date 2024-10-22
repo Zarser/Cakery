@@ -61,8 +61,13 @@ function displayProducts(products, containerId) {
     products.forEach(product => {
         container.innerHTML += `
             <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="img/${product.title.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${product.image}" class="card-img-top" alt="${product.title}">
+                <div class="card mb-4 product-card">
+                    <div class="image-container">
+                        <img src="img/${product.title.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${product.image}" class="card-img-top rounded-circle" alt="${product.title}">
+                        <div class="ingredients-overlay">
+                            <p>Ingredients: ${product.ingredients}</p>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">$${product.price.toFixed(2)}</p>
@@ -73,6 +78,7 @@ function displayProducts(products, containerId) {
         `;
     });
 }
+
 
 // Function to initialize search functionality
 function initializeSearchFunctionality() {
@@ -105,25 +111,25 @@ function initializeSearchFunctionality() {
 
 // Product data for demonstration
 const cupcakes = [
-    { title: "Chocolate Cupcake", price: 2.50, image: "1.jpg" },
-    { title: "Vanilla Cupcake", price: 2.50, image: "2.jpg" },
-    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg" },
-    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg" },
-    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg" },
-    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg" },
-    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg" },
-    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg" },
+    { title: "Chocolate Cupcake", price: 2.50, image: "1.jpg", ingredients: "Flour, Sugar, Cocoa, Eggs, Milk" },
+    { title: "Vanilla Cupcake", price: 2.50, image: "2.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
 ];
 
 const weddingCakes = [
-    { title: "Elegant White Wedding Cake", price: 150.00, image: "1.jpg" },
-    { title: "Rustic Wedding Cake", price: 175.00, image: "2.jpg" },
-    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg" },
-    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg" },
-    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg" },
-    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg" },
-    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg" },
-    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg" },
+    { title: "Elegant White Wedding Cake", price: 150.00, image: "1.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Rustic Wedding Cake", price: 175.00, image: "2.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
 ];
 
 // Cart array, load from localStorage if available

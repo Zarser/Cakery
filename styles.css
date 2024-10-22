@@ -9,7 +9,7 @@ body {
     line-height: 1.6;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 /* Container Styles */
@@ -148,3 +148,34 @@ button.add-to-cart:hover {
 .navbar-logo-centered .navbar-nav .nav-link{
     padding: .5em 1em;
 }
+
+.product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container {
+    position: relative;
+}
+
+.ingredients-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.image-container:hover .ingredients-overlay {
+    opacity: 1; /* Show ingredients on hover */
+}
+
