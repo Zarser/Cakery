@@ -20,14 +20,16 @@ async function loadHeaderAndFooter() {
     }
 }
 
-// Function to search products
+// Function to search products by title or ingredients
 function searchProducts(keyword) {
     const filteredCupcakes = cupcakes.filter(cupcake =>
-        cupcake.title.toLowerCase().includes(keyword.toLowerCase())
+        cupcake.title.toLowerCase().includes(keyword.toLowerCase()) || 
+        cupcake.ingredients.toLowerCase().includes(keyword.toLowerCase())
     );
 
     const filteredWeddingCakes = weddingCakes.filter(cake =>
-        cake.title.toLowerCase().includes(keyword.toLowerCase())
+        cake.title.toLowerCase().includes(keyword.toLowerCase()) || 
+        cake.ingredients.toLowerCase().includes(keyword.toLowerCase())
     );
 
     // Get container elements
@@ -53,6 +55,7 @@ function searchProducts(keyword) {
         displayProducts(filteredWeddingCakes, 'weddingcakes-container');
     }
 }
+
 
 // Function to display products dynamically
 function displayProducts(products, containerId) {
@@ -111,25 +114,25 @@ function initializeSearchFunctionality() {
 
 // Product data for demonstration
 const cupcakes = [
-    { title: "Chocolate Cupcake", price: 2.50, image: "1.jpg", ingredients: "Flour, Sugar, Cocoa, Eggs, Milk" },
-    { title: "Vanilla Cupcake", price: 2.50, image: "2.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
-    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
-    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
-    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
-    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
-    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
-    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg", ingredients: "Flour, Sugar, Vanilla, Eggs, Milk" },
+    { title: "Cherry Dream Cupcake", price: 2.50, image: "1.jpg", ingredients: "Flour, Sugar, Vanilla, Cherry, Eggs, Milk" },
+    { title: "Golden Cupcake", price: 2.50, image: "2.jpg", ingredients: "Flour, Sugar, Vanilla, Saffron, Eggs, Milk" },
+    { title: "Candy Cupcake", price: 3.00, image: "3.jpg", ingredients: "Flour, Sugar, Vanilla, Watermelon, Lime, Orange, Sprinkles,  Eggs, Milk" },
+    { title: "Raspberry Cupcake", price: 2.75, image: "4.jpg", ingredients: "Flour, Sugar, Vanilla Suger, Raspberry, Eggs, Milk" },
+    { title: "Dark Dream Cupcake", price: 3.00, image: "5.jpg", ingredients: "Flour, Sugar, Vanilla Suger, Milkchocolate, Dark chocolate, Coffee, Eggs, Milk" },
+    { title: "Pink Lady Cupcake", price: 3.00, image: "6.png", ingredients: "Flour, Sugar, Pomegranate, Strawberries, Eggs, Milk" },
+    { title: "Caramel Dream Cupcake", price: 2.75, image: "7.png", ingredients: "Flour, Sugar, Vanilla Suger, Salt, Caramel, Eggs, Milk" },
+    { title: "Lemon Cupcake", price: 3.00, image: "8.png", ingredients: "Flour, Sugar, Lemon, Orange, Eggs, Milk" },
 ];
 
 const weddingCakes = [
-    { title: "Elegant White Wedding Cake", price: 150.00, image: "1.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Rustic Wedding Cake", price: 175.00, image: "2.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
-    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla"  },
+    { title: "Black Velvet Wedding Cake", price: 150.00, image: "1.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla, Milkchocolate, Dark chocolate, Coffee, Milk"  },
+    { title: "Rustic Orange Wedding Cake", price: 175.00, image: "2.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla, Vanilla Suger, Orange, Carmel, Milk"  },
+    { title: "Simpel Elegant Wedding Cake", price: 200.00, image: "3.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Milkchocolate, Vanilla Cream, Milk"  },
+    { title: "Red Dream Wedding Cake", price: 180.00, image: "4.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Strawberry, Milkchocolate Cream, Caramel, Milk "  },
+    { title: "Elegant Vanilla Wedding Cake", price: 160.00, image: "5.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla, Vanilla Suger, Vanilla Cream, Caramel, Milk"  },
+    { title: "Sour Dream Wedding Cake", price: 200.00, image: "6.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Lemon, Orange, Lime, Watermelon Cream, Milk"  },
+    { title: "SweetTooth Wedding Cake", price: 180.00, image: "7.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla, Caramel, Caramel/Walthers Cream, Milkchocolate Bites, Milk "  },
+    { title: "Candy Mountain Wedding Cake", price: 160.00, image: "8.jpg", ingredients: "Flour, Sugar, Eggs, Butter, Vanilla, Fruit Sprinkels, Smarties, Lemon, Marshmallow Cream, Milk"  },
 ];
 
 // Cart array, load from localStorage if available
@@ -181,6 +184,9 @@ function updateCartModal() {
         cartTotal.textContent = 'Total: $0.00'; // Reset total
     } else {
         let total = 0;
+        let cupcakeCount = 0;
+        let hasWeddingCake = false;
+
         cart.forEach((item, index) => {
             cartModalBody.innerHTML += `
                 <div class="cart-item">
@@ -191,10 +197,37 @@ function updateCartModal() {
                     <button class="btn btn-sm btn-danger remove-from-cart" data-index="${index}">Remove</button>
                 </div>
             `;
+
+            // Increment total price
             total += item.price;
+
+            // Count the cupcakes and check for wedding cakes
+            if (item.title.toLowerCase().includes('cupcake')) {
+                cupcakeCount++;
+            } else if (item.title.toLowerCase().includes('wedding cake')) {
+                hasWeddingCake = true;
+            }
         });
 
-        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        // Apply discounts based on the conditions
+        let discount = 0;
+
+        // If they have 10 or more cupcakes
+        if (cupcakeCount >= 10) {
+            if (hasWeddingCake) {
+                // 15% discount for 10+ cupcakes and a wedding cake
+                discount = total * 0.15;
+            } else {
+                // 10% discount for 10+ cupcakes
+                discount = total * 0.10;
+            }
+        }
+
+        // Subtract the discount from the total
+        total = total - discount;
+
+        // Display the total with the discount applied
+        cartTotal.textContent = `Total: $${total.toFixed(2)} ${discount > 0 ? `(Discount applied: $${discount.toFixed(2)})` : ''}`;
     }
 
     // Attach event listeners for removing items from the cart
@@ -207,6 +240,7 @@ function updateCartModal() {
         });
     });
 }
+
 
 // Initialize cart icon and modal event listener
 function initializeCartIcon() {
