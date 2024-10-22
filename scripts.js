@@ -110,11 +110,17 @@ const cupcakes = [
     { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg" },
     { title: "Lemon Cupcake", price: 2.75, image: "4.jpg" },
     { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg" },
+    { title: "Red Velvet Cupcake", price: 3.00, image: "3.jpg" },
+    { title: "Lemon Cupcake", price: 2.75, image: "4.jpg" },
+    { title: "Strawberry Cupcake", price: 3.00, image: "5.jpg" },
 ];
 
 const weddingCakes = [
     { title: "Elegant White Wedding Cake", price: 150.00, image: "1.jpg" },
     { title: "Rustic Wedding Cake", price: 175.00, image: "2.jpg" },
+    { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg" },
+    { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg" },
+    { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg" },
     { title: "Floral Wedding Cake", price: 200.00, image: "3.jpg" },
     { title: "Modern Wedding Cake", price: 180.00, image: "4.jpg" },
     { title: "Simple Tiered Wedding Cake", price: 160.00, image: "5.jpg" },
@@ -208,7 +214,7 @@ function initializeCartIcon() {
             const price = parseFloat(this.getAttribute('data-price'));
             const image = this.parentNode.parentNode.querySelector('img').getAttribute('src').split('/').pop(); // Get the image name
             cart.push({ title, price, image });
-            alert(`${title} added to cart!`);
+            
             saveCart(); // Save cart to localStorage
             updateCartBadge(); // Update cart icon badge
         });
