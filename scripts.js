@@ -62,7 +62,7 @@ function displayProducts(products, containerId) {
         container.innerHTML += `
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <img src="img/${product.title.toLowerCase().includes('cupcake') ? 'cupcakes' : 'weddingcakes'}/${product.image}" class="card-img-top" alt="${product.title}">
+                    <img src="img/${product.title.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${product.image}" class="card-img-top" alt="${product.title}">
                     <div class="card-body">
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">$${product.price.toFixed(2)}</p>
