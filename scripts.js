@@ -58,29 +58,35 @@ function searchProducts(keyword) {
 
 
 // Function to display products dynamically
+// Function to display products dynamically
 function displayProducts(products, containerId) {
     const container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear previous content
     products.forEach(product => {
         container.innerHTML += `
             <div class="col-md-4">
-                <div class="card mb-4 product-card">
-                    <div class="image-container">
-                        <img src="img/${product.title.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${product.image}" class="card-img-top rounded-circle" alt="${product.title}">
-                        <div class="ingredients-overlay">
-                            <p>Ingredients: ${product.ingredients}</p>
+                <a href="product-detail.html?title=${encodeURIComponent(product.title)}&price=${product.price}&image=${encodeURIComponent(product.image)}&ingredients=${encodeURIComponent(product.ingredients)}" class="product-link">
+                    <div class="card mb-4 product-card">
+                        <div class="image-container">
+                            <img src="img/${product.title.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${product.image}" class="card-img-top rounded-circle" alt="${product.title}">
+                            <div class="ingredients-overlay">
+                                <p>Ingredients: ${product.ingredients}</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${product.title}</h5>
+                            <p class="card-text">$${product.price.toFixed(2)}</p>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">${product.title}</h5>
-                        <p class="card-text">$${product.price.toFixed(2)}</p>
-                        <button class="btn btn-primary add-to-cart" data-title="${product.title}" data-price="${product.price}">Add to Cart</button>
-                    </div>
-                </div>
+                </a>
             </div>
         `;
     });
 }
+
+
+
+
 
 
 // Function to initialize search functionality
@@ -193,22 +199,27 @@ function updateCartModal() {
         let hasWeddingCake = false;
 
         cart.forEach((item, index) => {
+            // Calculate the total price for the item based on quantity
+            const itemTotalPrice = item.price * item.quantity;
+
+            // Append the item details to the cart modal body
             cartModalBody.innerHTML += `
                 <div class="cart-item">
-                    <img src="img/${item.title.toLowerCase().includes('cupcake') ? 'cupcakes' : 'weddingcakes'}/${item.image}" alt="${item.title}">
+                    <img src="img/${item.title.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${item.image}" alt="${item.title}" class="img-fluid">
                     <div class="flex-grow-1">
-                        <p class="mb-0">${item.title} - $${item.price.toFixed(2)}</p>
+                        <p class="mb-0">${item.title} x${item.quantity} - $${itemTotalPrice.toFixed(2)}</p>
+                        ${item.allergies ? `<p class="text-muted">Allergies: ${item.allergies}</p>` : ''}
                     </div>
                     <button class="btn btn-sm btn-danger remove-from-cart" data-index="${index}">Remove</button>
                 </div>
             `;
 
             // Increment total price
-            total += item.price;
+            total += itemTotalPrice;
 
             // Count the cupcakes and check for wedding cakes
             if (item.title.toLowerCase().includes('cupcake')) {
-                cupcakeCount++;
+                cupcakeCount += item.quantity; // Increment by quantity
             } else if (item.title.toLowerCase().includes('wedding cake')) {
                 hasWeddingCake = true;
             }
@@ -265,10 +276,6 @@ function updateCartModal() {
         });
     });
 }
-
-
-
-
 // Initialize cart icon and modal event listener
 function initializeCartIcon() {
     // Hide cart badge initially if empty
@@ -314,5 +321,82 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.title.includes("Products")) {
         displayProducts(cupcakes, 'cupcakes-container');
         displayProducts(weddingCakes, 'weddingcakes-container');
+    } else if (document.title.includes("Product Detail")) {
+        getProductDetailsFromURL();
+        initializeProductDetailCart();
     }
 });
+
+// Function to load product details from URL
+function getProductDetailsFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productTitle = urlParams.get('title');
+    const productPrice = urlParams.get('price');
+    const productImage = urlParams.get('image');
+    const productIngredients = urlParams.get('ingredients');
+
+    if (productTitle && productPrice && productImage && productIngredients) {
+        document.getElementById('product-title').textContent = productTitle;
+        document.getElementById('product-price').textContent = `$${parseFloat(productPrice).toFixed(2)}`;
+        
+        // Set image source with error handling
+        if (productImage) {
+            document.getElementById('product-image').src = `img/${productTitle.toLowerCase().includes('cupcake') ? 'Cupcakes' : 'Weddingcakes'}/${productImage}`;
+        } else {
+            document.getElementById('product-image').src = 'img/default.png'; // Fallback image
+            console.error('Product image is missing.');
+        }
+        
+        document.getElementById('product-ingredients').textContent = `Ingredients: ${productIngredients}`;
+    } else {
+        console.error('Product details are missing or invalid.');
+    }
+}
+
+// Function to initialize the Add to Cart button on product-detail.html
+function initializeProductDetailCart() {
+    const addToCartButton = document.getElementById('add-to-cart');
+    const allergyInput = document.getElementById('allergy-input');
+    const quantityInput = document.getElementById('quantity-input');
+
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', function () {
+            const productTitle = document.getElementById('product-title').textContent;
+            const productPrice = parseFloat(document.getElementById('product-price').textContent.replace('$', ''));
+            const productImage = document.getElementById('product-image').getAttribute('src').split('/').pop(); // Get the image filename
+            const allergies = allergyInput.value.trim(); // Get allergy input (optional)
+            const quantity = parseInt(quantityInput.value); // Get quantity
+
+            if (quantity > 0) {
+                cart.push({
+                    title: productTitle,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: quantity,
+                    allergies: allergies
+                });
+
+                saveCart(); 
+                updateCartBadge(); 
+            } else {
+                alert("Please enter a valid quantity.");
+            }
+        });
+    } else {
+        console.error('Add to Cart button not found on product detail page.');
+    }
+}
+
+
+document.querySelectorAll('a[href^="about.html"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent the default anchor behavior
+        window.location.href = this.getAttribute('href'); // Navigate to the page
+    });
+});
+
+
+
+
+
+

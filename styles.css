@@ -198,10 +198,21 @@ button.add-to-cart:hover {
     }
 }
 
+/* Make the entire card clickable */
+a.product-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit;        /* Inherit the text color */
+}
+
+.product-link:hover {
+    text-decoration: none;
+}
+
 /* Ingredients Overlay */
 .product-card {
     position: relative;
     overflow: hidden;
+    cursor: pointer; /* Indicate the card is clickable */
 }
 
 .image-container {
@@ -228,3 +239,15 @@ button.add-to-cart:hover {
 .image-container:hover .ingredients-overlay {
     opacity: 1; /* Show ingredients on hover */
 }
+
+/* Ensure the card is styled properly */
+.card {
+    border: none;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
